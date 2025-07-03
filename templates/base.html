@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Flask Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel='stylesheet' href='/static/css/bootstrap.min.css'>
+	
+	 <link href="/static/css/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+	 <link rel='stylesheet' href='/static/styles/css1.css'>
+</head>
+<body>
+	<header>
+		<div>
+		<div class="banner2">
+			<div class="labeltop">
+			
+		<a class="labeltop" href="/logout">{{message}} </a>	
+    {% if is_post %}
+      
+						<a class="labeltop" href="/logout">Logout</a>
+				
+           
+        {% else %}
+            
+       
+
+    {% endif %}
+</div>
+		</div>
+        <div class="banner"></div>
+
+
+		</div>
+	</header>
+{% block content %}{% endblock %}
+	
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='vendor/animsition/js/animsition.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/popper.js')}}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='vendor/select2/select2.min.js')}}"></script>
+	<script src="{{ url_for('static', filename='vendor/daterangepicker/moment.min.js')}}"></script>
+	<script src="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.js')}}"></script>
+	<script src="{{ url_for('static', filename='vendor/countdowntime/countdowntime.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>
