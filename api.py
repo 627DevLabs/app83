@@ -1,5 +1,6 @@
 from flask import Flask, url_for, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
+from waitress import serve
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -80,8 +81,8 @@ def logout():
 if(__name__ == '__main__'):
     app.secret_key = "ThisIsNotASecret:p"
     with app.app_context():
-        db.create_all()
-    app.run()
+        db.create_all()    
+    serve(app,host="0.0.0.0",port=8000)
 #https://github.com/627DevLabs/appfox
 #git remote add origin https://github.com/627DevLabs/appfox.git
 #git commit -m "App83 load 1"
