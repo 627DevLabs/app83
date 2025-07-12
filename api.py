@@ -87,11 +87,11 @@ if(__name__ == '__main__'):
         port = int(os.environ.get("PORT", 5000))
         app.run(host='0.0.0.0', port=port)
         
-   //f app.run(debug=True)
+   #//f app.run(debug=True)
     
 #https://github.com/627DevLabs/appfox
 #git remote add origin https://github.com/627DevLabs/appfox.git
-#git commit -m "App83 load 1"
+#git commit -m "App83 load 2"
 #git config --global user.email "627devlab@gmail.com"
  #back in history, before material,
  
