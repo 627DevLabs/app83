@@ -1,0 +1,61 @@
+
+{
+  "skills": {
+    "technical_skills": [
+      "Python", "JavaScript", "HTML", "CSS", "SQL", "Java", "C#", "C++",
+      "Flutter", "Dart", "React", "Angular", "Node.js", "Git", "Linux",
+      "Docker", "Kubernetes", "AWS", "Azure", "Firebase", "REST API", "GraphQL",
+      "Machine Learning", "TensorFlow", "Data Analysis", "Data Science",
+      "Data Engineering", "Cybersecurity", "Networking", "System Administration"
+    ],
+    "soft_skills": [
+      "Communication", "Teamwork", "Problem-Solving", "Adaptability", "Time Management",
+      "Creativity", "Critical Thinking", "Emotional Intelligence", "Work Ethic",
+      "Leadership", "Responsibility", "Attention to Detail", "Conflict Resolution",
+      "Stress Management", "Decision-Making", "Multitasking"
+    ],
+    "management_skills": [
+      "Project Management", "Strategic Planning", "Team Leadership", "Resource Allocation",
+      "Risk Management", "Budgeting", "Scrum", "Agile Methodologies", "OKR Planning",
+      "Hiring", "Performance Reviews", "Operations Management"
+    ],
+    "creative_skills": [
+      "Graphic Design", "UI/UX Design", "Video Editing", "Photography", "Illustration",
+      "Animation", "3D Modeling", "Creative Writing", "Copywriting", "Blogging",
+      "Music Production", "Singing", "Storytelling", "Fashion Design"
+    ],
+    "marketing_skills": [
+      "SEO", "SEM", "Email Marketing", "Content Creation", "Google Ads",
+      "Social Media Management", "Influencer Marketing", "Analytics",
+      "Market Research", "Product Marketing", "Brand Strategy"
+    ],
+    "finance_skills": [
+      "Accounting", "Bookkeeping", "Financial Analysis", "Budget Planning",
+      "Cost Control", "Tax Preparation", "Invoicing", "Payroll", "Auditing",
+      "Investment Analysis", "QuickBooks", "Xero", "Excel"
+    ],
+    "interpersonal_skills": [
+      "Empathy", "Negotiation", "Active Listening", "Public Speaking",
+      "Mentoring", "Customer Service", "Networking", "Diplomacy",
+      "Cultural Awareness", "Collaboration", "Trust Building", "Confidence"
+    ],
+    "language_skills": [
+      "English", "Spanish", "French", "German", "Mandarin", "Portuguese",
+      "Arabic", "Russian", "Hindi", "Zulu", "Xhosa", "Afrikaans", "Swahili"
+    ],
+    "sales_skills": [
+      "Lead Generation", "Cold Calling", "CRM Management", "Closing Sales",
+      "Upselling", "Customer Relationship Management", "Pipeline Management",
+      "Proposal Writing", "Sales Forecasting"
+    ],
+    "education_skills": [
+      "Teaching", "Tutoring", "Curriculum Design", "Lesson Planning",
+      "Classroom Management", "Special Education", "E-learning",
+      "Educational Technology", "Assessment & Evaluation"
+    ],
+    "general_life_skills": [
+      "Cooking", "First Aid", "Driving", "Basic Repairs", "Time Management",
+      "Budgeting", "Housekeeping", "Gardening", "Personal Hygiene", "Fitness"
+    ]
+  }
+}

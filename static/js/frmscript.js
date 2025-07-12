@@ -123,7 +123,7 @@ const areFieldsFilled = () => {
       case "password":
         if (!passwordVerify(inputValue)) {
           error.innerText =
-            "Password should have uppsercase,lowercase,special symbols, number and length >= 8";
+            "Password should have uppercase,lowercase,special symbols, number and length >= 8";
           return false;
         }
         break;

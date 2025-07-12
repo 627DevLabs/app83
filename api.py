@@ -1,15 +1,17 @@
+import os
 from flask import Flask, url_for, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
-from waitress import serve
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 db = SQLAlchemy(app)
 languages =""
-
+my_dir = os.path.dirname(__file__)
+json_file_path = os.path.join(my_dir, "static/data/languages.json")
+#f = open("static/data/languages.json")
 def getLangs():
     global languages
-    f = open("static/data/languages.json")
+    f = open(json_file_path)
     languages=f.read()
     print(f.read())
     f.close()
@@ -81,8 +83,12 @@ def logout():
 if(__name__ == '__main__'):
     app.secret_key = "ThisIsNotASecret:p"
     with app.app_context():
-        db.create_all()    
-    serve(app,host="0.0.0.0",port=8000)
+        db.create_all()
+        port = int(os.environ.get("PORT", 5000))
+        app.run(host='0.0.0.0', port=port)
+        
+   //f app.run(debug=True)
+    
 #https://github.com/627DevLabs/appfox
 #git remote add origin https://github.com/627DevLabs/appfox.git
 #git commit -m "App83 load 1"

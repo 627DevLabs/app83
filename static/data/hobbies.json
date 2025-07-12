@@ -1,0 +1,124 @@
+{
+  "hobbies": {
+    "creative_arts": [
+      "Drawing",
+      "Painting",
+      "Photography",
+      "Calligraphy",
+      "Crafting",
+      "Pottery",
+      "Origami",
+      "Sculpting",
+      "Embroidery",
+      "Woodworking"
+    ],
+    "music_and_performance": [
+      "Singing",
+      "Playing Guitar",
+      "Playing Piano",
+      "DJing",
+      "Composing Music",
+      "Beatboxing",
+      "Playing Drums",
+      "Dancing",
+      "Acting",
+      "Karaoke"
+    ],
+    "sports_and_fitness": [
+      "Running",
+      "Cycling",
+      "Swimming",
+      "Hiking",
+      "Yoga",
+      "Weightlifting",
+      "Soccer",
+      "Basketball",
+      "Tennis",
+      "Martial Arts"
+    ],
+    "outdoor_activities": [
+      "Camping",
+      "Fishing",
+      "Gardening",
+      "Bird Watching",
+      "Star Gazing",
+      "Rock Climbing",
+      "Surfing",
+      "Horseback Riding",
+      "Skateboarding",
+      "Hunting"
+    ],
+    "technology_and_gaming": [
+      "Video Gaming",
+      "Board Games",
+      "Coding",
+      "Robotics",
+      "Building PCs",
+      "Virtual Reality",
+      "3D Printing",
+      "Drone Flying",
+      "Hacking",
+      "App Development"
+    ],
+    "literature_and_learning": [
+      "Reading",
+      "Writing",
+      "Blogging",
+      "Poetry",
+      "Journaling",
+      "Storytelling",
+      "Language Learning",
+      "Debating",
+      "Public Speaking",
+      "Book Club Participation"
+    ],
+    "collecting": [
+      "Stamp Collecting",
+      "Coin Collecting",
+      "Comic Book Collecting",
+      "Toy Collecting",
+      "Sneaker Collecting",
+      "Vinyl Record Collecting",
+      "Antique Collecting",
+      "Action Figure Collecting",
+      "Trading Card Collecting",
+      "Model Building"
+    ],
+    "food_and_culinary": [
+      "Cooking",
+      "Baking",
+      "Wine Tasting",
+      "Coffee Brewing",
+      "Mixology",
+      "Fermenting",
+      "Food Blogging",
+      "Cake Decorating",
+      "Cheese Making",
+      "Trying New Cuisines"
+    ],
+    "travel_and_exploration": [
+      "Traveling",
+      "Backpacking",
+      "Road Tripping",
+      "Exploring New Cultures",
+      "City Tours",
+      "Beachcombing",
+      "Heritage Research",
+      "Travel Photography",
+      "Adventure Travel",
+      "Cruise Vacations"
+    ],
+    "social_and_recreational": [
+      "Volunteering",
+      "Networking",
+      "Board Game Nights",
+      "Hosting Events",
+      "Trivia Nights",
+      "Social Dancing",
+      "Pet Care",
+      "Meditation",
+      "Mindfulness",
+      "Mentoring"
+    ]
+  }
+}

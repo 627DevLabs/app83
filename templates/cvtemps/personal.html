@@ -1,0 +1,130 @@
+{% block personal %}
+
+            <form class="frm">
+              <div class="frmlabels">
+                
+               <a> Personal details</a>
+              
+              </div>
+              <div class="form-container">
+                  <div class="frmitem" >
+                    <label for="fname">First Name(s)</label>
+                    <input
+                      type="text"
+                      placeholder="Enter your first names"
+                      class="input"
+                      name="fname"
+                    />
+                  </div>
+              </div>
+              <div class="form-container">
+                  <div class="frmitem" >
+                    <label for="sname">Surname</label>
+                    <input
+                      placeholder="Enter your surname"
+                      type="text"
+                      class="input"
+                      name="sname"
+                    />
+                  </div>
+              </div>
+              <div class="form-container">
+                  <div class="frmitem" >
+                    <label for="idno">ID Number</label>
+                    <input
+                      placeholder="Enter your ID Number"
+                      type="text"
+                      class="input"
+                      name="idno"
+                    />
+                  </div>
+              </div>        
+              <div class="form-container">
+                  <div class="frmitem" >
+                    <label for="h-lang">Home Language</label>
+                      <input
+                        placeholder="Enter your Home Language"
+                        type="text"
+                        class="input input-lang"
+                        id="h-lang"
+                        name="hlang"
+                      />
+                  </div>          
+              </div>
+                <div class="form-container">
+                  <div class="frmitem" >
+                    <label for="h-lang2">Other Language</label>
+                      <input
+                        placeholder="Enter your Home Language"
+                        type="text"
+                        class="input input-lang"
+                        id="h-lang2"
+                        name="hlang2"
+                      />
+                  </div>          
+                </div>
+              <div class="form-container">
+                  <div class="frmitem" >
+                    <label id="langcnt" >Rate Languages(0)</label>
+                    <div id="rate-lang-block"></div>
+                  </div>          
+              </div>
+              <div class="form-container">
+                <div class="frmitem" >
+                    <label for="empstat">Employment Status</label>
+                    <select id="empstat" class="form-control nice-select wide">
+                      <option value="" disabled selected>
+                        Are you employed?
+                      </option>
+                      <option value="">
+                        Yes
+                      </option>
+                      <option value="">
+                        No
+                      </option>                    
+                    </select>              
+                </div>          
+              </div>
+              <div class="form-container">
+                  <div class="frmitem" >
+                  <label for="breadqinner">Are you a bread winner?</label>             
+                    <select id="breadqinner" class="form-control nice-select wide">
+                      <option value="" disabled selected>
+                        Is your family depending on you?
+                      </option>
+                      <option value="">
+                        Yes
+                      </option>
+                      <option value="">
+                        No
+                      </option>                      
+                    </select>              
+                </div>          
+              </div>
+              <div class="form-container">
+                <div class="frmitem" >
+                  <label for="income">Average Household income?</label>             
+                  <select id="income"class="form-control nice-select wide">
+                      <option value="" disabled selected>
+                        What is your average Household income?
+                      </option>
+                      <option value="">
+                        < R 15000.00
+                      </option>
+                      <option value="">
+                        < R 3000.00
+                      </option>
+                      <option value="">
+                        < R 4500.00
+                      </option>
+                      <option value="">
+                        > R 5000.00
+                      </option>
+                      <option value="">
+                        I'd rather not say
+                      </option>
+                  </select>              
+                </div>          
+              </div>
+            </form>
+{% endblock %}

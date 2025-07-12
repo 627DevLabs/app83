@@ -7,11 +7,12 @@ const error = document.getElementById("error-message");
 const btns = document.getElementsByClassName("btn");
 const selectTyped = document.getElementsByClassName('.typed');
 const languages = JSON.parse(document.getElementById('langs').innerText);
-
+ 
 const ratelang = document.getElementById("rate-lang-block");
 const ratelang2 = document.getElementById("rate-lang-block");
 const langoptions = document.getElementById('optionlist');
 const loptions = document.getElementById('loptions');
+const btnsave = document.getElementById("btnsave");
 
 const hlang = document.getElementById('h-lang');
 const hlang2 = document.getElementById('h-lang2');
@@ -59,8 +60,8 @@ let qualibox = '<div class="qualigrid">' +
   '</div>' +
   '<div class="form-container frmyr">' +
   '<div class="frmitem" >' +
-  '<label >Attach Qualification</label>' +
-  '<input placeholder="Enter year" type="text" class="input" name="attx"/>' +
+  '<label >Attachments</label>' +
+  '<input placeholder="Add+" type="text" class="input" name="attx"/>' +
   '</div>' +
   '</div>' +
   '<div class="form-container gridrow1">' +
@@ -70,43 +71,42 @@ let qualibox = '<div class="qualigrid">' +
   '</div>' +
   '</div>';
 
-let empbox = '<div class="empligrid">' +
-  '<div class="form-container">' +
-  '<div class="frmitem" >' +
-  '<label >Employer</label>' +
-  '<input type="text" placeholder="Enter Employer/Company name" class="input" name="employ"/>' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container">' +
-  '<div class="frmitem" >' +
-  '<label >Job Title/Post</label>' +
-  '<input type="text" placeholder="Enter Job title"  class="input"  name="jobtit"/>' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container">' +
-  '<div class="frmitem" >' +
-  '<label >Duration from</label>' +
-  '<input type="date" class="input" id="dob-input" />' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container">' +
-  '<div class="frmitem" >' +
-  '<label >Duration to</label>' +
-  '<input type="date" class="input" id="dob-input" />' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container jopresp">' +
-  '<div class="frmitem" >' +
-  '<label >Job responsibilities</label>' +
-  '<input type="text" placeholder="Enter Job responsibilities separated by a double foward slash '//'" class="input" name="jobtitle"/>'+
-'</div>' +
-  '</div>' +
-  '<div class="form-container gridrow1x">' +
-  '<div class="frmitemX" >' +
-  'remove' +
-  '</div>' +
-  '</div>' +
-  '</div>'
+let empbox = '<div class="empligrid">'+ 
+                    '<div class="form-container">'+ 
+                      '<div class="frmitem" >'+ 
+                        '<label >Employer</label>'+ 
+                        '<input type="text" placeholder="Enter Employer/Company name" class="input" name="employ"/>'+ 
+                      '</div>'+ 
+                    '</div>'+ 
+                    '<div class="form-container">'+ 
+                      '<div class="frmitem" >'+ 
+                        '<label >Job Title/Post</label><input type="text" placeholder="Enter Job title" class="input" name="jobtit"/>'+ 
+                      '</div>'+ 
+                    '</div>'+ 
+                    '<div class="form-container">'+ 
+                      '<div class="frmitem" >'+ 
+                            '<label class="datelab">From...</label>'+ 
+                            '<div class="datething"><input type="date" class="datepic1" id="datepicker1" style="visibility: hidden; position: absolute;">'+  
+                              '<label class="labdate1" for="datepicker1" onclick="document.getElementById("datepicker1").showPicker();">Get_Date</label>'+ 
+                            '</div>'+ 
+                          '</div>'+             
+                    '</div>'+ 
+                    '<div class="form-container">'+ 
+                      '<div class="frmitem" >'+ 
+                          '<label class="datelab">To...</label>'+ 
+                          '<div class="datething"><input type="date" class="datepic2" id="datepicker2" style="visibility: hidden; position: absolute;"><label class="labdate2" for="datepicker2" onclick="document.getElementById("datepicker2").showPicker();">Get Date</label></div>'+ 
+                      '</div> '+            
+                    '</div>'+ 
+                    '<div class="form-container frmitem jopresp">'+ 
+                          '<label >Job responsibilities</label>'+ 
+                          '<input type="text" placeholder="Enter Job responsibilities separated by a double foward slash //" class="input" name="jobtitle"/>'+
+                    '</div>'+ 
+                    '<div class="form-container gridrow1x">'+ 
+                        '<div class="frmitemXemp" >'+ 
+                          'remove'+ 
+                        '</div>'+ 
+                    '</div>'+ 
+              '</div>'
 window.onload = () => {
   currentStep = 0;
   btns[currentStep].classList.add("highlight");
@@ -114,7 +114,7 @@ window.onload = () => {
 addqualific.addEventListener("click", addQualific);
 
 
-
+//btnsave
 function addQualific() {
   maingridview.innerHTML += qualibox;
   addRemListerns();

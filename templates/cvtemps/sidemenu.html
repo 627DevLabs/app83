@@ -1,0 +1,32 @@
+{% block sidemenu %}
+ 	 <div class="sidemenu">
+    
+          
+        <aside class="sidebar">
+			<h3>Details</h3>
+			
+			<nav class="menu">
+                <a class="langs hide" id="langs">{{langs}} </a>	
+		    <button class="btn activateu" id="pers">Personal</button>
+         <button class="btn activateu" id="dri"> Driving</button>
+            <button class="btn activateu" id="aca">Academics</button>
+            <button class="btn activateu" id="wor">Work</button>
+            <button class="btn activateu" id="ski">Skills</button>
+            <button class="btn activateu" id="hob">Hobbies</button>
+            <button class="btn activateu" id="ref">Referrals</button>
+            <div></div>
+            <button class="btn activateu" id="ref">Wards</button>
+             <div></div>
+            <button class="btn activateuSave" id="btnsave">Save</button>
+			</nav>
+
+		</aside>
+        </div>
+        <div class="content-larger">
+            <div id="optionlist" class="hide">
+              languages
+              <div id="loptions"></div>          
+              <div></div>
+        
+            </div>
+{% endblock %}
