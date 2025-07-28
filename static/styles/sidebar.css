@@ -1,6 +1,6 @@
 .sidebar {
     width: 75px;
-    height: 100vh;
+    height: 100%;
     background-color: #111827;
     color: #9ca3af;
     display: flex;
@@ -112,8 +112,8 @@
 .activateu{
    font-size: 12px;
    font-weight: bold;
-    width: 50px;
- border-radius: 30%;
+    width: 75px;
+ border-radius: 5%;
  text-overflow:ellipsis;
 } 
 .activateuSave{

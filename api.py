@@ -1,21 +1,41 @@
 import os
-from flask import Flask, url_for, render_template, request, redirect, session
+from flask import Flask, url_for, render_template, request, redirect, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 db = SQLAlchemy(app)
 languages =""
+skills =""
+hobbies=""
 my_dir = os.path.dirname(__file__)
-json_file_path = os.path.join(my_dir, "static/data/languages.json")
+lang_path = os.path.join(my_dir, "static/data/languages.json")
+skills_path = os.path.join(my_dir, "static/data/skills.json")
+hobbis_path = os.path.join(my_dir, "static/data/hobbies.json")
 #f = open("static/data/languages.json")
 def getLangs():
     global languages
-    f = open(json_file_path)
+    f = open(lang_path)
     languages=f.read()
     print(f.read())
     f.close()
 getLangs()    
+
+def getskill():
+    global skills 
+    f = open(skills_path)
+    skills=f.read()
+    print(f.read())
+    f.close()
+getskill()        
+def gethobis():
+    global hobbies
+    f = open(hobbis_path)
+    hobbies=f.read()
+    print(f.read())
+    f.close()
+gethobis()        
+
 @app.route('/getlanguages', methods=['GET', 'POST'])
 def getlanguages():
     global languages
@@ -40,11 +60,9 @@ class User(db.Model):
 @app.route('/', methods=['GET'])
 def index():
    
-    if session.get('logged_in'):
+    #if session.get('logged_in'):
         return render_template('index.html',message="Hello and Welcome!!")
-    else:
-        return render_template('index.html', message="Hello and Welcome!!")
-
+    
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -71,7 +89,7 @@ def login():
         data = User.query.filter_by(username=u, password=p).first()
         if data is not None:
             session['logged_in'] = True
-            return render_template('home2.html',message=request.form['username'] ,langs=languages, is_post=True)
+            return render_template('home2.html',message=request.form['username'] ,langs=languages,skil=skills,hobs=hobbies, is_post=True)
         return render_template('index.html', message="Incorrect Details", is_post=False)
 
 
@@ -80,13 +98,19 @@ def logout():
     session['logged_in'] = False
     return render_template('index.html', message="Logged out", is_post=False)
 
+@app.route('/submit', methods=['POST'])
+def submit():
+    data = request.get_json()
+    print("Received data:", data)
+    return jsonify({'status': 'success'}), 200
+
 if(__name__ == '__main__'):
     app.secret_key = "ThisIsNotASecret:p"
     with app.app_context():
         db.create_all()
         port = int(os.environ.get("PORT", 5000))
-        app.run(host='0.0.0.0', port=port)
-        
+       # app.run(host='0.0.0.0', port=port)
+        app.run(debug=True)
    #//f app.run(debug=True)
     
 #https://github.com/627DevLabs/appfox

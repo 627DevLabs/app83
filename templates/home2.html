@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<link rel='stylesheet' href='/static/styles/sidebar.css'>
 <link rel='stylesheet' href='/static/styles/btn.css'>
 <div class="supermain">
   <div class="maingrid">
@@ -15,18 +14,39 @@
         {% include 'cvtemps/hobbies.html' %}
         {% include 'cvtemps/referals.html' %}          
     </div>
-    </div><div class="ffg">
-      <div class="bigImage" style='--imgsrc:url("/static/images/pro4.png")'> </div>
-      <div class="bigImage" style='--imgsrc:url("/static/images/pro1.png")'></div>
-      <div class="bigImage" style='--imgsrc:url("/static/images/pro2.png")'></div>
-      <div class="bigImage" style='--imgsrc:url("/static/images/pro3.png")'></div>
-      <div >
+   
+  </div>
+</div>
+<!-- Button to trigger -->
+
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="summaryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="summaryModalLabel">Confirm Your Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre id="modalSummaryText" class="summary-text"></pre>
+      </div>
+      <div class="modal-footer">
+        <button onclick="downloadSummary()" class="btn btn-secondary">⬇ Download JSON</button>
+        <button onclick="printSummary()" class="btn btn-secondary">🖨️ Print</button>
+        <button onclick="confirmSubmit()" class="btn btn-success">✅ Confirm & Submit</button>
+        <button class="btn btn-danger" data-bs-dismiss="modal">❌ Cancel</button>
+      </div>
     </div>
   </div>
 </div>
 
 
+
 <script src="{{ url_for('static', filename='js/frmstp.js')}}"></script>
-	
+<script src="{{ url_for('static', filename='js/ajaxifyr.js')}}"></script>
+<!-- Bootstrap Modal (ensure Bootstrap CSS & JS included) -->
+
+
 {% endblock %}
             </div>
