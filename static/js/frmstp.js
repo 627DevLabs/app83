@@ -30,6 +30,43 @@ maingridemp = document.getElementById('maingridemp');
 btnrememp = document.getElementsByClassName('delemp');
 myDatePic1 = document.getElementsByClassName('datepic1');
 myDatePic2 = document.getElementsByClassName('datepic2');
+myDatePic3 = document.getElementsByClassName('datepic3');
+
+ let backPressedOnce = false;
+
+  function showExitModal() {
+    document.getElementById("exitModal").style.display = "flex";
+  }
+
+  function closeExitModal() {
+    document.getElementById("exitModal").style.display = "none";
+  }
+
+  function pushHistoryState() {
+    history.pushState({ page: "stay" }, "", "");
+  }
+
+  // Setup on load
+  window.onload = () => {
+    pushHistoryState();
+  };
+
+  window.onpopstate = function () {
+    if (!backPressedOnce) {
+      pushHistoryState(); // prevent leaving
+      showExitModal();
+      backPressedOnce = true;
+
+      setTimeout(() => {
+        backPressedOnce = false;
+        closeExitModal();
+      }, 3000); // reset after 3 seconds
+    } else {
+      // Second back press: allow leaving
+      closeExitModal();
+      history.go(-2);
+    }
+  };
 
 let currentStep = 0;
 let langChk = 0;
@@ -44,107 +81,75 @@ let rateLAnguage =
   '<button class="btnx btn1l" id="btn5x" style="--colour:#0DFC05FF">Remove</button>'+
   '</div>';
   
-let qualibox = '<div class="qualigrid">' +
-  '<div class="form-container frmqua">' +
-  '<div class="frmitem" >' +
-  '<label >Qualification</label>' +
-  '<input type="text" placeholder="Enter Qualification" class="input" name="qualix" />' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container frmins">' +
-  '<div class="frmitem" >' +
-  '<label >Institution</label>' +
-  '<input type="text" placeholder="Enter Institution name" class="input" name="instix" />' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container frmyr">' +
-  '<div class="frmitem" >' +
-  '<label >Year Obtained</label>' +
-  '<input placeholder="Enter year" type="text" class="input" name="yobtx" />' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container frmyr">' +
-  '<div class="frmitem" >' +
-  '<label >Attachments</label>' +
-  '<input placeholder="Add+" type="text" class="input" name="attx"/>' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container gridrow1">' +
-  ' <div class="delbtn"></div>' +
-  '</div>' +
-  '</div>';
-let empbox = '<div class="empingrid">' +
-  '<div class="form-container frmqua">' +
-  '<div class="frmitem" >' +
-  '<label >Employer</label>' +
-  '<input type="text" placeholder="Enter Employer/Company" class="input" name="empix" />' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container frmins">' +
-  '<div class="frmitem" >' +
-  '<label >Institution</label>' +
-  '<input type="text" placeholder="Enter Job title name" class="input" name="jobtit" />' +
-  '</div>' +
-  '</div>' +
- '<div class="form-container">' +
-  '<div class="frmitem" >' +
-  '<label class="datelab">To...</label>' +
-  '<div class="datething"><input type="date" class="datepic2" id="datepicker2" style="visibility: hidden; position: absolute;"><label class="labdate2"'+
-  ' for="datepicker2" onclick="document.getElementById("datepicker2").showPicker();">Date</label></div>' +
-  '</div> ' +
-  '</div>' +
-  '<div class="form-container">' +
-  '<div class="frmitem" >' +
-  '<label class="datelab">From...</label>' +
-  '<div class="datething"><input type="date" class="datepic1" id="datepicker1" style="visibility: hidden; position: absolute;">' +
-  '<label class="labdate1" for="datepicker1" onclick="document.getElementById("datepicker1").showPicker();">Date</label>' +
-  '</div>' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container frmitem empresprow1">' +
-  '<label >Job responsibilities</label>' +
-  '<input type="text" placeholder="Enter Job responsibilities separated by a double foward slash //" class="input" name="jobtitle"/>' +
-  '</div>' +  
-  '<div class="form-container gridrow1">' +
-  ' <div class="delbtn"></div>' +
-  '</div>' +  
-  '</div>';
+let qualibox = `<div class="qualigrid">
+  <div class="form-container frmqua">
+  <div class="frmitem" >
+  <label >Qualification</label>
+  <input type="text" placeholder="Enter Qualification" class="input" name="qualix" />
+  </div>
+  </div>
+  <div class="form-container frmins">
+  <div class="frmitem" >
+  <label >Institution</label>
+  <input type="text" placeholder="Enter Institution name" class="input" name="instix" />
+  </div>
+  </div>
+  <div class="form-container">
+  <div class="frmitem" >
+  <label class="datelab">From...</label>
+  <div class="datething"><input type="date" class="datepic3" id="datepicker3" style="visibility: hidden; position: absolute;">
+  <label class="labdate3"  onclick="document.getElementById('datepicker3event').showPicker();">Date</label>
+  </div>
+  </div>
+  </div>
+  <div class="form-container frmyr">
+  <div class="frmitem" >
+  <label >Attachments</label>
+  <input placeholder="Add+" type="text" class="input" name="attx"/>
+  </div>
+  </div>
+  <div class="form-container gridrow1">
+   <div class="delbtn"></div>
+  </div>
+  </div>`;
+let empbox = `<div class="empingrid">
+  <div class="form-container frmqua">
+  <div class="frmitem" >
+  <label >Employer</label>
+  <input type="text" placeholder="Enter Employer/Company" class="input" name="empix" />
+  </div>
+  </div>
+  <div class="form-container frmins">
+  <div class="frmitem" >
+  <label >Institution</label>
+  <input type="text" placeholder="Enter Job title name" class="input" name="jobtit" />
+  </div>
+  </div>
+ <div class="form-container">
+  <div class="frmitem" >
+  <label class="datelab">To...</label>
+  <div class="datething"><input type="date" class="datepic2" id="datepicker2" style="visibility: hidden; position: absolute;"><label class="labdate2"'+
+    onclick="document.getElementById('datepicker2event').showPicker();">Date</label></div>
+  </div> 
+  </div>
+  <div class="form-container">
+  <div class="frmitem" >
+  <label class="datelab">From...</label>
+  <div class="datething"><input type="date" class="datepic1" id="datepicker1" style="visibility: hidden; position: absolute;">
+  <label class="labdate1"  onclick="document.getElementById('datepicker1event').showPicker();">Date</label>
+  </div>
+  </div>
+  </div>
+  <div class="form-container frmitem empresprow1">
+  <label >Job responsibilities</label>
+  <input type="text" placeholder="Enter Job responsibilities separated by a double foward slash //" class="input" name="-resp"/>
+  </div>  
+  <div class="form-container gridrow1">
+   <div class="delemp"></div>
+  </div>  
+  </div>`;
 
-let empboxg = '<div class="empligrid">' +
-  '<div class="form-container">' +
-  '<div class="frmitem" >' +
-  '<label >Employer</label>' +
-  '<input type="text" placeholder="Enter Employer/Company name" class="input" name="employ"/>' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container">' +
-  '<div class="frmitem" >' +
-  '<label >Job Title/Post</label><input type="text" placeholder="Enter Job title" class="input" name="jobtit"/>' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container">' +
-  '<div class="frmitem" >' +
-  '<label class="datelab">From...</label>' +
-  '<div class="datething"><input type="date" class="datepic1" id="datepicker1" style="visibility: hidden; position: absolute;">' +
-  '<label class="labdate1" for="datepicker1" onclick="document.getElementById("datepicker1").showPicker();">Get_Date</label>' +
-  '</div>' +
-  '</div>' +
-  '</div>' +
-  '<div class="form-container">' +
-  '<div class="frmitem" >' +
-  '<label class="datelab">To...</label>' +
-  '<div class="datething"><input type="date" class="datepic2" id="datepicker2" style="visibility: hidden; position: absolute;"><label class="labdate2" for="datepicker2" onclick="document.getElementById("datepicker2").showPicker();">Get Date</label></div>' +
-  '</div> ' +
-  '</div>' +
-  '<div class="form-container frmitem jopresp">' +
-  '<label >Job responsibilities</label>' +
-  '<input type="text" placeholder="Enter Job responsibilities separated by a double foward slash //" class="input" name="jobtitle"/>' +
-  '</div>' +
-  '<div class="form-container gridrow1x">' +
-  '<div class="delemp" >' +  
-  '</div>' +
-  '</div>' +
-  '</div>'
+
 window.onload = () => {
   currentStep = 0;
   btns[currentStep].classList.add("highlight");
@@ -152,16 +157,27 @@ window.onload = () => {
 addqualific.addEventListener("click", addQualific);
 
 
-//btnsave
+let qualnd =0;
 function addQualific() {
-  maingridview.innerHTML += qualibox;
+
+  maingridview = document.getElementById('maingrid');
+  let qualIn = qualibox;
+  let resp5  = "datepicker3" + qualnd.toString();
+  qualIn = String(qualIn).replace("datepicker3", resp5);
+    qualIn = String(qualIn).replace("datepicker3event", resp5);
+ 
+  maingridview.insertAdjacentHTML('beforeend', qualIn);
+
+ 
   addRemListerns();
+  qualnd++;
 }
 function addRemListerns() {
-  maingridview = document.getElementById('maingridview');
+  maingridview = document.getElementById('maingrid');
   btnrem = document.getElementsByClassName('delbtn');
   for (let i = 0; i < maingridview.children.length; i++) {
     btnrem[i].addEventListener("click", remQulif);
+    myDatePic3[i].addEventListener("change", adate);
   }
 }
 function remQulif(e) {
@@ -175,9 +191,25 @@ function remQulif(e) {
   };
 }
 addemp.addEventListener("click", addEmpin);
+let empix =0;
 function addEmpin() {
-  maingridemp.innerHTML += empbox;
+  let empIn = empbox;
+  let resp1 = "resp" + empix.toString();
+  let resp0  = "datepicker1" + empix.toString();
+  let resp2  = "datepicker2" + empix.toString();
+  let resp3  = "empix" + empix.toString();
+  let resp4  = "jobtit" + empix.toString();
+  empIn = String(empIn).replace("-resp", resp1);
+  empIn = String(empIn).replace("datepicker1", resp0);
+  empIn = String(empIn).replace("datepicker2", resp2);
+  empIn = String(empIn).replace("empix", resp3);
+  empIn = String(empIn).replace("jobtit", resp4);
+  empIn = String(empIn).replace("datepicker1event", resp0);
+  empIn = String(empIn).replace("datepicker2event", resp2);
+  maingridemp.insertAdjacentHTML('beforeend', empIn);
+ // maingridemp.innerHTML += empIn;
   addRemListernsemp();
+  empix++;
 }
 // myDatePic2[0].addEventListener("change", adate);
 // myDatePic1[0].addEventListener("change", adate);
@@ -188,16 +220,26 @@ function addRemListernsemp() {
     btnrememp[i].addEventListener("click", rememp);
     myDatePic2[i].addEventListener("change", adate);
     myDatePic1[i].addEventListener("change", adate);
+  
+
   }
 }
 
 //myDatePic.addEventListener("change",adate);
 function adate() {
+  date1 = document.getElementsByClassName('labdate1');
+  date2 = document.getElementsByClassName('labdate2');
+    date3 = document.getElementsByClassName('labdate3');
   for (let i = 0; i < maingridemp.children.length; i++) {
     if (this == myDatePic1[i]) {
-      alert(myDatePic1[i].classList);
+     // myDatePic1[i].innerText=myDatePic1[i].value;
+      date1[i].innerText = myDatePic1[i].value;
     } else if (this == myDatePic2[i]) {
-      alert("Date 2");
+     
+      date2[i].innerText = myDatePic2[i].value;
+    }else if (this == myDatePic3[i]) {
+     
+      date3[i].innerText = myDatePic3[i].value;
     }
 
   }
@@ -211,6 +253,7 @@ function rememp(e) {
     if (e.target == btnrememp[i]) {
       e.target.parentNode.parentNode.parentNode.children[i].remove();
     } else {
+
     }
   };
 }
@@ -259,14 +302,14 @@ function getLanguage(e) {
 }
 function languageoptions() {
   btn1ls = document.getElementsByClassName('btn1l');
-  alert(btn1ls.length);
+
   for (let i = 0; i < btn1ls.length; i++) {
     btn1ls[i].addEventListener("click", highlightBtn);   
   }
 }
 function highlightBtn(e){
   e.preventDefault();
-alert(e.innerText);
+
 }
 function addListerners() {
   for (let i = 0; i < ratelang.children.length; i++) {
@@ -296,7 +339,7 @@ for (let i = 0; i < langzito.length; i++) {
 
 }
 function hidepopup() {
-  alert("Ohh yeah Ohh yeah");
+
 }
 for (let i = 0; i < btns.length; i++) {
   element = btns[i];
@@ -312,7 +355,7 @@ function getlang() {
     langChk = 1;
   }
   if (this.value != "") {
-
+z
     loptions.innerHTML = "";
     for (lang in languages) {
       inputLan = this.value.toLowerCase();
@@ -331,6 +374,7 @@ function rateOtherLangs() {
 }
 
 function activates() {
+ langoptions.classList.add("hide")
   for (let i = 0; i < formContainer.length; i++) {
     const element = formContainer[i];
     if (btns[i] == this) {
@@ -348,8 +392,6 @@ function activates() {
     btns[i].classList.remove("highlight");
   }
   this.classList.add("highlight");
-
-
 };
 
 //Password verification

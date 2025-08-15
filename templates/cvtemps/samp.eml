@@ -1,0 +1,13 @@
+From: your@email.com
+To: friend@example.com
+Subject: Hello from Ola...AutoCare
+MIME-Version: 1.0
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Thank you for your interest</h1>
+  <p>This is a test email from <b>Ola...AutoCare</b>.</p>
+</body>
+</html>

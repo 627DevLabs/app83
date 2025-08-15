@@ -8,6 +8,10 @@ db = SQLAlchemy(app)
 languages =""
 skills =""
 hobbies=""
+globCell=""
+globEmail=""
+globUser=""
+globpwd="" 
 my_dir = os.path.dirname(__file__)
 lang_path = os.path.join(my_dir, "static/data/languages.json")
 skills_path = os.path.join(my_dir, "static/data/skills.json")
@@ -38,7 +42,7 @@ gethobis()
 
 @app.route('/getlanguages', methods=['GET', 'POST'])
 def getlanguages():
-    global languages
+    global languages 
     return languages   
 
 
@@ -60,8 +64,11 @@ class User(db.Model):
 @app.route('/', methods=['GET'])
 def index():
    
-    #if session.get('logged_in'):
+    if session.get('logged_in'):
+        print("session.get('logged_in')")
         return render_template('index.html',message="Hello and Welcome!!")
+    else:
+        return render_template('landing.html', message="Hello and Welcome", is_post=True)
     
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
@@ -70,8 +77,7 @@ def register():
             db.session.add(User(username=request.form['username'], email=request.form['email'], cellno=request.form['cellno'], password=request.form['password']))
             db.session.commit(), 
             return render_template('home2.html',message=request.form['username'] , is_post=True)
-
-        #return render_template('simple.html', is_post=True, …)
+            #return render_template('simple.html', is_post=True, …)
         except:
             return render_template('index.html', message="User Already Exists", is_post=False)
     else:
@@ -81,22 +87,47 @@ def register():
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     global languages
+    global hobbies
+    global skills 
     if request.method == 'GET':
         return render_template('index.html', message="Register", is_post=False)
     else:
         u = request.form['username']       
         p = request.form['password']
         data = User.query.filter_by(username=u, password=p).first()
+        
         if data is not None:
+            print(data.cellno)
             session['logged_in'] = True
-            return render_template('home2.html',message=request.form['username'] ,langs=languages,skil=skills,hobs=hobbies, is_post=True)
+            return render_template('landing.html',message=request.form['username'] ,langs=languages,skil=skills,hobs=hobbies,cellno=data.cellno,email=data.email, is_post=True)
         return render_template('index.html', message="Incorrect Details", is_post=False)
 
+@app.route('/home/', methods=['GET', 'POST'])
+def home():
+    global languages
+    global hobbies
+    global skills 
+    u = request.form['username']       
+    p = request.form['password']
+    data = User.query.filter_by(username=u, password=p).first()
+    return render_template('hom2.html',message=request.form['username'] ,langs=languages,skil=skills,hobs=hobbies,cellno=data.cellno,email=data.email, is_post=True)
+    
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session['logged_in'] = False
     return render_template('index.html', message="Logged out", is_post=False)
+
+@app.route('/cvLand', methods=['GET','POST'])
+def cvLand():
+    global languages
+    global hobbies
+    global skills 
+    #data = request.get_json()
+    #print("Received data:", data)
+    return render_template('home2.html', message="Resume portal",langs=languages,skil=skills,hobs=hobbies, is_post=False)
+    #return jsonify({'status': 'success'}), 200
+
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -117,5 +148,4 @@ if(__name__ == '__main__'):
 #git remote add origin https://github.com/627DevLabs/appfox.git
 #git commit -m "App83 load 2"
 #git config --global user.email "627devlab@gmail.com"
- #back in history, before material,
- 
+

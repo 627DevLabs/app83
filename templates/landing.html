@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="welcome-container">
+  <h1>Welcome</h1>
+  <div class="search-bar">
+    <input type="text" placeholder="Search..." />
+</div>
+<div class="tile-grid">
+    <a href="{{ url_for('cvLand') }}" class="tile tile-large bg-blue">Dashboard</a>
+    <a href="#" class="tile tile-medium bg-green">Payments</a>
+    <a href="#" class="tile tile-small bg-orange">Cards</a>
+    <a href="#" class="tile tile-wide bg-red">Transactions</a>
+    <a href="#" class="tile tile-medium bg-purple">Analytics</a>
+    <a href="#" class="tile tile-small bg-teal">Budget</a>
+    <a href="#" class="tile tile-wide bg-yellow">Loans</a>
+    <a href="#" class="tile tile-medium bg-blue">Savings</a>
+    <a href="#" class="tile tile-small bg-green">Insurance</a>
+    <a href="#" class="tile tile-large bg-orange">Claims</a>
+    <a href="#" class="tile tile-medium bg-red">Documents</a>
+    <a href="#" class="tile tile-small bg-purple">Support</a>
+    <a href="#" class="tile tile-medium bg-teal">Settings</a>
+    <a href="#" class="tile tile-small bg-yellow">Security</a>
+    <a href="#" class="tile tile-wide bg-blue">Mobile Banking</a>
+</div>
+<!--
+<div class="tile-grid">
+    <a href="{{ url_for('cvLand') }}" class="tile tile-large bg-blue">Career corner</a>
+    <a href="#" class="tile tile-small bg-green">Small Business Center</a>
+    
+    <a href="#" class="tile tile-wide bg-orange">Q-app</a>
+    <a href="#" class="tile tile-small bg-red">Ola...Petrol</a>
+    <a href="#" class="tile tile-medium bg-purple">Godfrey's Honey</a>
+    <a href="#" class="tile tile-large bg-teal">Bra Ya Ka Media</a>
+    <a href="#" class="tile tile-small bg-blue">YD's</a>
+    <a href="#" class="tile tile-large bg-yellow">First Tank Clearners</a>
+    <a href="#" class="tile tile-large bg-yellow">Fashion</a>
+    <a href="#" class="tile tile-medium bg-yellow">Traditional Heath Herbs</a>
+
+</div>
+   Search Bar -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search...">
+    <button>🔍</button>
+  </div>
+
+  <!-- Button Grid 
+  <div class=>
+    <button  class="activateu" onclick="openCVwindow()"></button>
+    
+    <button  class="activateu">Button 2</button>
+    <button  class="activateu">Button 3</button>
+    <button  class="activateu">Button 4</button>
+    <button  class="activateu">Button 5</button>
+    <button  class="activateu">Button 6</button>
+    <button  class="activateu">Button 7</button>
+    <button  class="activateu">Button 8</button>
+    <a class="labeltop" href="/cvLand">Logout</a>
+    <a class="labeltop" href="{{ url_for('cvLand') }}">Dashboard</a>
+<button  class="activateu" type="button" class="labeltop btn btn-primary"
+        onclick="window.location.href='{{ url_for('cvLand') }}'">
+    Dashboard
+</button>
+  </div>
+</div>-->
+<script src="{{ url_for('static', filename='js/landing.js')}}"></script>
+{% endblock %}

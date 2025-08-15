@@ -32,7 +32,7 @@
         <pre id="modalSummaryText" class="summary-text"></pre>
       </div>
       <div class="modal-footer">
-        <button onclick="downloadSummary()" class="btn btn-secondary">⬇ Download JSON</button>
+        <button onclick="downloadSummary()" class="btn btn-secondary">⬇ Download </button>
         <button onclick="printSummary()" class="btn btn-secondary">🖨️ Print</button>
         <button onclick="confirmSubmit()" class="btn btn-success">✅ Confirm & Submit</button>
         <button class="btn btn-danger" data-bs-dismiss="modal">❌ Cancel</button>
@@ -46,7 +46,7 @@
 <script src="{{ url_for('static', filename='js/frmstp.js')}}"></script>
 <script src="{{ url_for('static', filename='js/ajaxifyr.js')}}"></script>
 <!-- Bootstrap Modal (ensure Bootstrap CSS & JS included) -->
-
+<script src="{{ url_for('static', filename='js/html2canvas.min.js')}}"></script>
 
 {% endblock %}
-            </div>
+           
