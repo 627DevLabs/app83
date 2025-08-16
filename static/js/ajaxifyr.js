@@ -1,8 +1,8 @@
-let cellno= document.getElementById('cellno').innerText;
-let email= document.getElementById('email').innerText;      
-document.getElementById('cellno').innerText="";
-document.getElementById('email').innerText="";      
-        
+let cellno = document.getElementById('cellno').innerText;
+let email = document.getElementById('email').innerText;
+document.getElementById('cellno').innerText = "";
+document.getElementById('email').innerText = "";
+
 function collectFormData() {
   const formData = {
     personal: {
@@ -14,7 +14,7 @@ function collectFormData() {
       empstat: document.querySelector("#empstat")?.value,
       breadwinner: document.querySelector("#breadqinner")?.value,
       cellno: cellno,
-      email: email,      
+      email: email,
       income: document.querySelector("#income")?.value
     },
     academics: [],
@@ -23,30 +23,31 @@ function collectFormData() {
     skills: [],//document.querySelector("textarea[name='skills']")?.value,
     referrals: [],//document.querySelector("textarea[name='referrals']")?.value
   };
-   skilz = document.getElementsByClassName('skilz');
-   for (let i = 0; i < skilz.length; i++) {
-    if(skilz[i].value !=""){
-   formData.skills.push({
-      skill : skilz[i].value,     
-    });     
-   }}
-   hobiz = document.getElementsByClassName('hobiz');
-   for (let i = 0; i < hobiz.length; i++) {
-    if(hobiz[i].value !=""){
-      formData.hobbies.push({
-      hobby : hobiz[i].value,     
-    });
-    }        
-   }
-   refz= document.getElementsByClassName('refz');
-   for (let i = 0; i < refz.length; i++) {
-    if(refz[i].value !=""){
-   formData.referrals.push({
-      referral : refz[i].value,     
-    });     
+  skilz = document.getElementsByClassName('skilz');
+  for (let i = 0; i < skilz.length; i++) {
+    if (skilz[i].value != "") {
+      formData.skills.push({
+        skill: skilz[i].value,
+      });
+    }
   }
-   }
-  
+  hobiz = document.getElementsByClassName('hobiz');
+  for (let i = 0; i < hobiz.length; i++) {
+    if (hobiz[i].value != "") {
+      formData.hobbies.push({
+        hobby: hobiz[i].value,
+      });
+    }
+  }
+  refz = document.getElementsByClassName('refz');
+  for (let i = 0; i < refz.length; i++) {
+    if (refz[i].value != "") {
+      formData.referrals.push({
+        referral: refz[i].value,
+      });
+    }
+  }
+
   document.querySelectorAll(".qualigrid").forEach((el) => {
     formData.academics.push({
       qualification: el.querySelector("input[name^='qualix']")?.value,
@@ -124,14 +125,14 @@ function buildResumeHTML(data, cellno, email) {
   html += `<li><div class="uilab"><div class="perslab"><strong>Name</strong></div> ${data.personal.fname} ${data.personal.sname}</div></li>`;
   html += `<li><div class="uilab"><div class="perslab"><strong>Id/Passport</strong></div> ${data.personal.idno}</div></li>`;
   html += `<li><div class="uilab"><div class="perslab"><strong>H.Language</strong></div> ${data.personal.hlang}</div></li>`;
-//  html += `<li><div class="uilab"><div class="perslab"><strong>Other languages</strong></div> ${data.personal.hlang2}</div></li>`;
+  //  html += `<li><div class="uilab"><div class="perslab"><strong>Other languages</strong></div> ${data.personal.hlang2}</div></li>`;
   html += `<li><div class="uilab"><div class="perslab"><strong>Employed?</strong></div> ${data.personal.empstat}</div></li>`;
-//  html += `<li><div class="uilab"><div class="perslab"><strong>Breadwinner</strong></div> ${data.personal.breadwinner}</div></li>`;
-//  html += `<li><div class="uilab"><div class="perslab"><strong>AvFaIncome</strong></div> ${data.personal.income}</div></li>`;
-//  html += `<li><div class="uilab"><div class="perslab"><strong>Phone no.</strong></div> ${cellno}</div></li>`;
-//  html += `<li><div class="uilab"><div class="perslab"><strong>Email</strong></div> ${email}</div></li>`;
+  //  html += `<li><div class="uilab"><div class="perslab"><strong>Breadwinner</strong></div> ${data.personal.breadwinner}</div></li>`;
+  //  html += `<li><div class="uilab"><div class="perslab"><strong>AvFaIncome</strong></div> ${data.personal.income}</div></li>`;
+  //  html += `<li><div class="uilab"><div class="perslab"><strong>Phone no.</strong></div> ${cellno}</div></li>`;
+  //  html += `<li><div class="uilab"><div class="perslab"><strong>Email</strong></div> ${email}</div></li>`;
   html += '</ul>';
-  
+
   html += '<h5>🎓 Academic Records</h5><ul>';
   data.academics.forEach((item, idx) => {
     html += `<li><strong>Qualification ${idx + 1}:</strong> ${item.qualification}, ${item.institution}, ${item.year}, Attachment: ${item.attachment}</li>`;
@@ -237,7 +238,7 @@ function injectPrintModal() {
       }
     </style>
   `;
-const modalWrapper = document.createElement('div');
+  const modalWrapper = document.createElement('div');
   modalWrapper.innerHTML = modalHTML;
   document.body.appendChild(modalWrapper);
 }
@@ -254,7 +255,7 @@ function showPrintModal(htmlContent) {
   window.addEventListener('afterprint', closeAfterPrint);
 }
 
-  
+
 function closeModal() {
   const modal = document.getElementById('printModal');
   if (modal) modal.style.display = 'none';
@@ -263,54 +264,54 @@ function closeModal() {
 function formatDataAsHtml(data) {
   /* This code snippet is generating HTML content based on the data collected from the form. Here's a
   breakdown of what it does: */
-//https://youtu.be/5WY8ApIA2Fk?list=RD5WY8ApIA2Fk
- 
-//let html = `<div class="prntHeader"> ${data.personal[0]}</div>`;
-let fname = String(data.personal.fname).substring(0,1).toLocaleUpperCase();
-let sname = String(data.personal.sname).substring(0,1).toUpperCase();
-let html = `<div class="prntHeader"><div class="topinit">${fname}|${sname}</div></div>`;
- 
+  //https://youtu.be/5WY8ApIA2Fk?list=RD5WY8ApIA2Fk
 
-html += `<div class="topDivider"></div>`;
+  //let html = `<div class="prntHeader"> ${data.personal[0]}</div>`;
+  let fname = String(data.personal.fname).substring(0, 1).toLocaleUpperCase();
+  let sname = String(data.personal.sname).substring(0, 1).toUpperCase();
+  let html = `<div class="prntHeader"><div class="topinit">${fname}|${sname}</div></div>`;
 
-html += `<div class="svg-grid-container">`;
+
+  html += `<div class="topDivider"></div>`;
+
+  html += `<div class="svg-grid-container">`;
 
   // Left column
   html += `<div class="left-column">`;
 
-    // Personal Details
-    html += `<div class="grid-item personal"><h5>🧍 Personal Details</h5><ul>`;
-    html += `<div class="uilab"><div class="perslab">Name</div> ${data.personal.fname} ${data.personal.sname}</div>`;
-    html += `<li><div class="uilab"><div class="perslab">Id/Pass No</div> ${data.personal.idno}</div></li>`;
-    html += `<li><div class="uilab"><div class="perslab">Home Language</div> ${data.personal.hlang}</div></li>`;
+  // Personal Details
+  html += `<div class="grid-item personal"><h5>🧍 Personal Details</h5><ul>`;
+  html += `<div class="uilab"><div class="perslab">Name</div> ${data.personal.fname} ${data.personal.sname}</div>`;
+  html += `<li><div class="uilab"><div class="perslab">Id/Pass No</div> ${data.personal.idno}</div></li>`;
+  html += `<li><div class="uilab"><div class="perslab">Home Language</div> ${data.personal.hlang}</div></li>`;
   //  html += `<li><div class="uilab"><div class="perslab">Other languages</div> ${data.personal.hlang2}</div></li>`;
   //   html += `<li><div class="uilab"><div class="perslab">Employed?</div> ${data.personal.empstat}</div></li>`;
   //   html += `<li><div class="uilab"><div class="perslab">Breadwinner</div> ${data.personal.breadwinner}</div></li>`;
   //   html += `<li><div class="uilab"><div class="perslab">AvFaIncome</div> ${data.personal.income}</div></li>`;
   //   html += `<li><div class="uilab"><div class="perslab">Phone no.</div> ${cellno}</div></li>`;
   //   html += `<li><div class="uilab"><div class="perslab">Email</div> ${email}</div></li>`;
-    html += `</ul></div>`;
+  html += `</ul></div>`;
 
-    // Hobbies
-    html += `<div class="grid-item hobbies"><h5>🎯 Hobbies</h5><ul>`;
-    data.hobbies.forEach((item, idx) => {
-      html += `<li><strong>Hobby ${idx + 1}:</strong> ${item.hobby}</li>`;
-    });
-    html += `</ul></div>`;
+  // Hobbies
+  html += `<div class="grid-item hobbies"><h5>🎯 Hobbies</h5><ul>`;
+  data.hobbies.forEach((item, idx) => {
+    html += `<li><strong>Hobby ${idx + 1}:</strong> ${item.hobby}</li>`;
+  });
+  html += `</ul></div>`;
 
-    // Skills
-    html += `<div class="grid-item skills"><h5>🛠️ Skills</h5><ul>`;
-    data.skills.forEach((item, idx) => {
-      html += `<li><strong>Skill ${idx + 1}:</strong> ${item.skill}</li>`;
-    });
-    html += `</ul></div>`;
+  // Skills
+  html += `<div class="grid-item skills"><h5>🛠️ Skills</h5><ul>`;
+  data.skills.forEach((item, idx) => {
+    html += `<li><strong>Skill ${idx + 1}:</strong> ${item.skill}</li>`;
+  });
+  html += `</ul></div>`;
 
-    // Referrals
-    html += `<div class="grid-item referrals"><h5>📞 Referrals</h5><ul>`;
-    data.referrals.forEach((item, idx) => {
-      html += `<li><strong>Referral ${idx + 1}:</strong> ${item.referral}</li>`;
-    });
-    html += `</ul></div>`;
+  // Referrals
+  html += `<div class="grid-item referrals"><h5>📞 Referrals</h5><ul>`;
+  data.referrals.forEach((item, idx) => {
+    html += `<li><strong>Referral ${idx + 1}:</strong> ${item.referral}</li>`;
+  });
+  html += `</ul></div>`;
 
   html += `</div>`; // End left column
 
@@ -318,54 +319,54 @@ html += `<div class="svg-grid-container">`;
   // Right column
   html += `<div class="right-column">`;
 
-    // Academics
-       // Academics
-  
+  // Academics
+  // Academics
 
-html += `<div class="grid-item academics">`;
-html += `<h5>🎓 Academic Records</h5>`;
 
-// Start table
-html += `<table style="width:100%; border-collapse: collapse;">`;
-html += `<thead>
+  html += `<div class="grid-item academics">`;
+  html += `<h5>🎓 Academic Records</h5>`;
+
+  // Start table
+  html += `<table style="width:100%; border-collapse: collapse;">`;
+  html += `<thead>
             <tr>
               <th style="border-bottom: 2px solid #ccc; padding: 8px; text-align:left;">Qualifications</th>
               <th style="border-bottom: 2px solid #ccc; padding: 8px; text-align:left;">Institution</th>
             
             </tr>
          </thead>`;
-html += `<tbody>`;
+  html += `<tbody>`;
 
-// Table rows from data
-data.academics.forEach((item) => {
-  html += `<tr>
+  // Table rows from data
+  data.academics.forEach((item) => {
+    html += `<tr>
             <td style="border-bottom: 1px solid #eee; padding: 8px;">${item.qualification}</td>
             <td style="border-bottom: 1px solid #eee; padding: 8px;">${item.institution}</td>
            
            </tr>`;
-             html += `<tr>
+    html += `<tr>
             <td colspan="3" style="border-bottom: 1px solid #eee; padding: 8px; color:#555;">
               <strong>Year:</strong> ${item.year} 
             </td>
            </tr>`;
-});
+  });
 
-html += `</tbody>`;
-html += `</table>`;
-html += `</div>`;
+  html += `</tbody>`;
+  html += `</table>`;
+  html += `</div>`;
 
 
 
-    
-    
 
-    // Work
-   html += `<div class="grid-item work">`;
-html += `<h5>💼 Work Experience</h5>`;
 
-// Start table
-html += `<table style="width:100%; border-collapse: collapse;">`;
-html += `<thead>
+
+  // Work
+  html += `<div class="grid-item work">`;
+  html += `<h5>💼 Work Experience</h5>`;
+
+  // Start table
+  html += `<table style="width:100%; border-collapse: collapse;">`;
+  html += `<thead>
             <tr>
              
               <th style="width: 100px; border-bottom: 2px solid #ccc; padding: 8px; text-align:center;">
@@ -382,20 +383,20 @@ html += `<thead>
             </th>
             </tr>
          </thead>`;
-html += `<tbody>`;
+  html += `<tbody>`;
 
-// Table rows from data
-data.work.forEach((item) => {
-  // Main row
-  html += `<tr>
+  // Table rows from data
+  data.work.forEach((item) => {
+    // Main row
+    html += `<tr>
             <td style="border-bottom: 1px solid #eee; padding: 8px;">${item.jobTitle}</td>
             <td style="border-bottom: 1px solid #eee; padding: 8px;">${item.employer}</td>
             <td style="border-bottom: 1px solid #eee; padding: 8px; text-align:center;">${item.fromDate}</td>
             <td style="border-bottom: 1px solid #eee; padding: 8px; text-align:center;">${item.toDate}</td>
            </tr>`;
 
-  // Second row for dates
-  html += `<tr>
+    // Second row for dates
+    html += `<tr>
             <td colspan="3" style="border-bottom: 1px solid #eee; padding: 8px; color:#555;">
               <strong>Responsibilities:</strong> ${item.jobResp} 
             </td>
@@ -403,51 +404,142 @@ data.work.forEach((item) => {
            <tr>
   <td colspan="3" style="height: 1px; background-color: #ddd; padding: 0;"></td>
 </tr>`;
-});
+  });
 
-html += `</tbody>`;
-html += `</table>`;
-html += `</div>`;
+  html += `</tbody>`;
+  html += `</table>`;
+  html += `</div>`;
 
-    html += `</ul></div>`;
+  html += `</ul></div>`;
 
   html += `</div>`; // End right column
 
-html += `</div>`; // End grid container
+  html += `</div>`; // End grid container
 
-return html;
+  return html;
 
 }
-
 function downloadSummary() {
   const originalElement = document.getElementById("prntCV");
 
-  // Step 1: Take screenshot of the actual content
-  html2canvas(originalElement, { scale: 2, useCORS: true }).then((contentCanvas) => {
-    // Step 2: Create a temporary A4 container
-    const a4Width = 2480; // px at 300 DPI
-    const a4Height = 3508; // px at 300 DPI
+  // Clone node to avoid affecting UI
+  const clone = originalElement.cloneNode(true);
+  clone.id = "prntCV_clone";
+  clone.classList.add("force-desktop");
+
+  // Apply fixed A4 sizing for the clone
+  clone.style.width = "2480px";
+  clone.style.height = "3508px";
+  clone.style.position = "absolute";
+  clone.style.left = "-9999px"; // hide off-screen
+  clone.style.top = "0";
+  clone.style.padding = "0";
+  clone.style.margin = "0";
+
+  document.body.appendChild(clone);
+
+  html2canvas(clone, {
+    scale: 2,
+    useCORS: true,
+    width: 2480,
+    height: 3508,
+    windowWidth: 2480,
+    windowHeight: 3508
+  }).then((contentCanvas) => {
+    // Remove clone after rendering
+    document.body.removeChild(clone);
+
+    // Create a new blank A4 canvas
+    const a4Width = 2480;
+    const a4Height = 3508;
     const a4Canvas = document.createElement("canvas");
     a4Canvas.width = a4Width;
     a4Canvas.height = a4Height;
 
-    // Step 3: Draw white background
     const ctx = a4Canvas.getContext("2d");
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, a4Width, a4Height);
 
-    // Step 4: Calculate centering for the screenshot
-    const x = (a4Width - contentCanvas.width) / 2;
-    const y = (a4Height - contentCanvas.height) / 2;
+    // ✅ Put capture at 0,0 without scaling/stretching
     ctx.drawImage(contentCanvas, 0, 0);
 
-    // Step 5: Download as PNG
+    // Download
     const link = document.createElement("a");
     link.download = "summary_a4.png";
     link.href = a4Canvas.toDataURL("image/png");
     link.click();
   });
 }
+
+
+
+
+// function downloadSummary() {
+//   const originalElement = document.getElementById("prntCV");
+
+//   // Force desktop layout
+//   originalElement.classList.add("force-desktop");
+
+//   // Optional: scale to fit A4
+//   const scaleFactor = Math.min(2480 / originalElement.scrollWidth, 3508 / originalElement.scrollHeight);
+//   originalElement.style.transform = `scale(${scaleFactor})`;
+
+//   html2canvas(originalElement, { scale: 2, useCORS: true }).then((contentCanvas) => {
+//     // Remove transform after capture
+//     originalElement.style.transform = '';
+//     originalElement.classList.remove("force-desktop");
+
+//     const a4Width = 2480;
+//     const a4Height = 3508;
+//     const a4Canvas = document.createElement("canvas");
+//     a4Canvas.width = a4Width;
+//     a4Canvas.height = a4Height;
+
+//     const ctx = a4Canvas.getContext("2d");
+//     ctx.fillStyle = "white";
+//     ctx.fillRect(0, 0, a4Width, a4Height);
+
+//     // Center the content
+//     const x = (a4Width - contentCanvas.width) / 2;
+//     ctx.drawImage(contentCanvas, x, 0);
+
+//     const link = document.createElement("a");
+//     link.download = "summary_a4.png";
+//     link.href = a4Canvas.toDataURL("image/png");
+//     link.click();
+//   });
+// }
+
+
+// function downloadSummary() {
+//   const originalElement = document.getElementById("prntCV");
+
+//   // Step 1: Take screenshot of the actual content
+//   html2canvas(originalElement, { scale: 2, useCORS: true }).then((contentCanvas) => {
+//     // Step 2: Create a temporary A4 container
+//     const a4Width = 2480; // px at 300 DPI
+//     const a4Height = 3508; // px at 300 DPI
+//     const a4Canvas = document.createElement("canvas");
+//     a4Canvas.width = a4Width;
+//     a4Canvas.height = a4Height;
+
+//     // Step 3: Draw white background
+//     const ctx = a4Canvas.getContext("2d");
+//     ctx.fillStyle = "white";
+//     ctx.fillRect(0, 0, a4Width, a4Height);
+
+//     // Step 4: Calculate centering for the screenshot
+//     const x = (a4Width - contentCanvas.width) / 2;
+//     const y = (a4Height - contentCanvas.height) / 2;
+//     ctx.drawImage(contentCanvas, 0, 0);
+
+//     // Step 5: Download as PNG
+//     const link = document.createElement("a");
+//     link.download = "summary_a4.png";
+//     link.href = a4Canvas.toDataURL("image/png");
+//     link.click();
+//   });
+// }
 
 
 function printSummary() {
@@ -463,12 +555,12 @@ function confirmSubmit() {
     },
     body: JSON.stringify(formData)
   })
-  .then(response => {
-    alert('Form submitted successfully!');
-    document.body.removeChild(document.getElementById('customModalOverlay'));
-  })
-  .catch(error => {
-    alert('Submission failed. Try again.');
-  });
+    .then(response => {
+      alert('Form submitted successfully!');
+      document.body.removeChild(document.getElementById('customModalOverlay'));
+    })
+    .catch(error => {
+      alert('Submission failed. Try again.');
+    });
 }
 

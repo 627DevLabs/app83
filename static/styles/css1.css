@@ -811,16 +811,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
       display: none;
     }
   }
-.prntHeader{
-		background-color: blue;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 2480;
-		height: 60px;
-		padding: 1px;
-		color: #fff;
-}  
+
+  
 .topinit{
 	width: 60px;
 	font-weight:600;
@@ -1057,4 +1049,75 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 @media (max-width: 480px) {
     .tile-grid { grid-auto-rows: 60px; }
     .tile { font-size: 0.7rem; }
+}
+/* This will only apply when we add .force-desktop to #prntCV */
+#prntCV.force-desktop {
+  width: 2480px;  /* A4 desktop width in px */
+  height: auto;
+  background: white;
+}
+
+#prntCV.force-desktop .svg-grid-container {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important; /* lock 2 columns */
+  gap: 20px !important;
+}
+
+#prntCV.force-desktop .left-column,
+#prntCV.force-desktop .right-column {
+  width: 100% !important;
+}
+
+/* Stop mobile stacking */
+@media screen and (max-width: 9999px) {
+  #prntCV.force-desktop {
+    flex-direction: row !important;
+  }
+}
+
+/* Force desktop layout */
+#prntCV.force-desktop {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: auto;          /* let it scale */
+  max-width: 100%;      /* never overflow container */
+  transform-origin: top left;
+}
+
+/* Optional: scale the content smaller if it's too wide */
+#prntCV.force-desktop.scaled {
+  transform: scale(0.8);  /* adjust until it fits A4 */
+}
+
+/* Normal screen view */
+.prntHeader {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  background: #f5f5f5;
+}
+
+.prntHeader .topinit {
+  font-size: 20px;   /* fixed for normal screens */
+  font-weight: bold;
+  color: #222;
+}
+
+/* Force-desktop / A4 download mode */
+#prntCV.force-desktop .prntHeader,
+#prntCV_clone.force-desktop .prntHeader {
+  width: 100% !important;        
+  margin: 0 !important;
+  padding: 30px 0 !important;
+  text-align: center;
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+
+#prntCV.force-desktop .prntHeader .topinit,
+#prntCV_clone.force-desktop .prntHeader .topinit {
+  font-size: 20px !important;   /* scale only when in download mode */
+  font-weight: bold;
+  color: #222;
 }
