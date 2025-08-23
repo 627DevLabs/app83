@@ -63,7 +63,12 @@ class User(db.Model):
 
 @app.route('/', methods=['GET'])
 def index():
-   
+    global languages
+    global hobbies
+    global skills 
+    global globUser
+    global globEmail
+    global globCell
     if session.get('logged_in'):
         print("session.get('logged_in')")
         return render_template('index.html',message="Hello and Welcome!!")
@@ -72,11 +77,20 @@ def index():
     
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
+    global languages
+    global hobbies
+    global skills 
+    global globUser
+    global globEmail
+    global globCell
     if request.method == 'POST':
         try:
             db.session.add(User(username=request.form['username'], email=request.form['email'], cellno=request.form['cellno'], password=request.form['password']))
             db.session.commit(), 
-            return render_template('home2.html',message=request.form['username'] , is_post=True)
+            globUser=request.form['username']
+            globEmail=request.form['email']
+            globCell=request.form['cellno']
+            return render_template('home2.html',message=request.form['username'] ,langs=languages,skil=skills,hobs=hobbies,cellno=globCell,email=globEmail, is_post=True)
             #return render_template('simple.html', is_post=True, …)
         except:
             return render_template('index.html', message="User Already Exists", is_post=False)
@@ -89,6 +103,9 @@ def login():
     global languages
     global hobbies
     global skills 
+    global globUser
+    global globEmail
+    global globCell
     if request.method == 'GET':
         return render_template('index.html', message="Register", is_post=False)
     else:
@@ -99,7 +116,11 @@ def login():
         if data is not None:
             print(data.cellno)
             session['logged_in'] = True
-            return render_template('landing.html',message=request.form['username'] ,langs=languages,skil=skills,hobs=hobbies,cellno=data.cellno,email=data.email, is_post=True)
+            globUser=request.form['username']
+            globEmail=data.email
+            globCell=data.cellno
+            
+            return render_template('landing.html',message=request.form['username'] ,langs=languages,skil=skills,hobs=hobbies,cellno=globCell,email=globEmail, is_post=True)
         return render_template('index.html', message="Incorrect Details", is_post=False)
 
 @app.route('/home/', methods=['GET', 'POST'])
@@ -107,10 +128,13 @@ def home():
     global languages
     global hobbies
     global skills 
+    global globUser
+    global globEmail
+    global globCell
     u = request.form['username']       
     p = request.form['password']
     data = User.query.filter_by(username=u, password=p).first()
-    return render_template('hom2.html',message=request.form['username'] ,langs=languages,skil=skills,hobs=hobbies,cellno=data.cellno,email=data.email, is_post=True)
+    return render_template('hom2.html',message=request.form['username'] ,langs=languages,skil=skills,hobs=hobbies,cellno=globCell,email=globEmail, is_post=True)
     
 
 @app.route('/logout', methods=['GET', 'POST'])
@@ -123,9 +147,12 @@ def cvLand():
     global languages
     global hobbies
     global skills 
+    global globUser
+    global globEmail
+    global globCell
     #data = request.get_json()
     #print("Received data:", data)
-    return render_template('home2.html', message="Resume portal",langs=languages,skil=skills,hobs=hobbies, is_post=False)
+    return render_template('home2.html', message=globUser,langs=languages,skil=skills,hobs=hobbies,cellno=globCell,email=globEmail, is_post=True)
     #return jsonify({'status': 'success'}), 200
 
 
@@ -140,8 +167,8 @@ if(__name__ == '__main__'):
     with app.app_context():
         db.create_all()
         port = int(os.environ.get("PORT", 5000))
-        app.run(host='0.0.0.0', port=port)
-        #  app.run(debug=True)
+        #app.run(host='0.0.0.0', port=port)
+        app.run(debug=True)
    #//f app.run(debug=True)
     
 #https://github.com/627DevLabs/appfox

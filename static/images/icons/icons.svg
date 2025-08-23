@@ -1,0 +1,10 @@
+<!-- icons.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-star" viewBox="0 0 24 24">
+    <path d="M12 2L15 8H9L12 2z"/>
+  </symbol>
+
+  <symbol id="icon-circle" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10"/>
+  </symbol>
+</svg>

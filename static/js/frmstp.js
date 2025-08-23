@@ -355,7 +355,7 @@ function getlang() {
     langChk = 1;
   }
   if (this.value != "") {
-z
+
     loptions.innerHTML = "";
     for (lang in languages) {
       inputLan = this.value.toLowerCase();

@@ -106,7 +106,7 @@ function openModal() {
   btnGroup.className = 'modal-buttons';
   btnGroup.innerHTML = `
     <button onclick="downloadSummary()">Download</button>
-    <button onclick="printSummary()">Print</button>
+   
     <button onclick="confirmSubmit()">Submit</button>
     <button onclick="document.body.removeChild(document.getElementById('customModalOverlay'))">Cancel</button>
   `;
